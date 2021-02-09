@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExpiationsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ExpiationCodes">
+    <Key>
+      <PropertyRef Name="expiationOffenceCode" />
+    </Key>
+    <Property Name="expiationOffenceCode" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="expiationOffenceLongDescription" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="expiationCategory" Type="varchar" MaxLength="15" />
+    <Property Name="category" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\DOUG\DROPBOX\UNISA\2019\WEB\SP2\ASSIGNMENT2\EXAMPLESOLN\ASSIGNMENT2\APP_DATA\EXPIATIONS.MDF.dbo.Expiations' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Expiations">
+    <Key>
+      <PropertyRef Name="noticeStatusDesc" />
+      <PropertyRef Name="driversLicenseStateDescExpiationSubject" />
+      <PropertyRef Name="regStateDescExpiationVehicle" />
+      <PropertyRef Name="expiationVehicleDescriptionExpiationVehicle" />
+      <PropertyRef Name="localServiceAreaDesc" />
+      <PropertyRef Name="incidentStartDate" />
+      <PropertyRef Name="time24HourIncidentStart" />
+      <PropertyRef Name="issueDate" />
+      <PropertyRef Name="expiationOffenceCode" />
+      <PropertyRef Name="offenceStatus" />
+      <PropertyRef Name="vehicleSpeed" />
+      <PropertyRef Name="expiationZoneSpeedLimit" />
+      <PropertyRef Name="bloodAlcoholContentExp" />
+      <PropertyRef Name="speedCameraCategory" />
+      <PropertyRef Name="photoRejectedReasonCode" />
+      <PropertyRef Name="photoRejectedReasonDesc" />
+      <PropertyRef Name="withdrawnReasonDesc" />
+      <PropertyRef Name="noticeTypeDesc" />
+      <PropertyRef Name="enforcementWarningNoticeFeeAmount" />
+      <PropertyRef Name="fixedCameraLocnCode" />
+      <PropertyRef Name="locationCodeMobileSpeedCamera" />
+      <PropertyRef Name="offenceStatusDescription" />
+      <PropertyRef Name="offencePenaltyAmt" />
+      <PropertyRef Name="offenceLevyAmt" />
+      <PropertyRef Name="corporateFeeAmount" />
+      <PropertyRef Name="penaltyWrittenOnNoticeAmount" />
+    </Key>
+    <Property Name="noticeStatusDesc" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="driversLicenseStateDescExpiationSubject" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="regStateDescExpiationVehicle" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="expiationVehicleDescriptionExpiationVehicle" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="localServiceAreaDesc" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="incidentStartDate" Type="date" Nullable="false" />
+    <Property Name="time24HourIncidentStart" Type="time" Precision="0" Nullable="false" />
+    <Property Name="issueDate" Type="date" Nullable="false" />
+    <Property Name="expiationOffenceCode" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="offencePenaltyAmt" Type="int" Nullable="false" />
+    <Property Name="offenceLevyAmt" Type="int" Nullable="false" />
+    <Property Name="corporateFeeAmount" Type="int" Nullable="false" />
+    <Property Name="offenceStatus" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="penaltyWrittenOnNoticeAmount" Type="int" Nullable="false" />
+    <Property Name="vehicleSpeed" Type="int" Nullable="false" />
+    <Property Name="expiationZoneSpeedLimit" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="bloodAlcoholContentExp" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="speedCameraCategory" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="photoRejectedReasonCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="photoRejectedReasonDesc" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="withdrawnReasonDesc" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="noticeTypeDesc" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="enforcementWarningNoticeFeeAmount" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fixedCameraLocnCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="locationCodeMobileSpeedCamera" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="offenceStatusDescription" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="ExpiationsModelStoreContainer">
+    <EntitySet Name="ExpiationCodes" EntityType="Self.ExpiationCodes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Expiations" EntityType="Self.Expiations" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Expiations].[noticeStatusDesc] AS [noticeStatusDesc], 
+    [Expiations].[driversLicenseStateDescExpiationSubject] AS [driversLicenseStateDescExpiationSubject], 
+    [Expiations].[regStateDescExpiationVehicle] AS [regStateDescExpiationVehicle], 
+    [Expiations].[expiationVehicleDescriptionExpiationVehicle] AS [expiationVehicleDescriptionExpiationVehicle], 
+    [Expiations].[localServiceAreaDesc] AS [localServiceAreaDesc], 
+    [Expiations].[incidentStartDate] AS [incidentStartDate], 
+    [Expiations].[time24HourIncidentStart] AS [time24HourIncidentStart], 
+    [Expiations].[issueDate] AS [issueDate], 
+    [Expiations].[expiationOffenceCode] AS [expiationOffenceCode], 
+    [Expiations].[offencePenaltyAmt] AS [offencePenaltyAmt], 
+    [Expiations].[offenceLevyAmt] AS [offenceLevyAmt], 
+    [Expiations].[corporateFeeAmount] AS [corporateFeeAmount], 
+    [Expiations].[offenceStatus] AS [offenceStatus], 
+    [Expiations].[penaltyWrittenOnNoticeAmount] AS [penaltyWrittenOnNoticeAmount], 
+    [Expiations].[vehicleSpeed] AS [vehicleSpeed], 
+    [Expiations].[expiationZoneSpeedLimit] AS [expiationZoneSpeedLimit], 
+    [Expiations].[bloodAlcoholContentExp] AS [bloodAlcoholContentExp], 
+    [Expiations].[speedCameraCategory] AS [speedCameraCategory], 
+    [Expiations].[photoRejectedReasonCode] AS [photoRejectedReasonCode], 
+    [Expiations].[photoRejectedReasonDesc] AS [photoRejectedReasonDesc], 
+    [Expiations].[withdrawnReasonDesc] AS [withdrawnReasonDesc], 
+    [Expiations].[noticeTypeDesc] AS [noticeTypeDesc], 
+    [Expiations].[enforcementWarningNoticeFeeAmount] AS [enforcementWarningNoticeFeeAmount], 
+    [Expiations].[fixedCameraLocnCode] AS [fixedCameraLocnCode], 
+    [Expiations].[locationCodeMobileSpeedCamera] AS [locationCodeMobileSpeedCamera], 
+    [Expiations].[offenceStatusDescription] AS [offenceStatusDescription]
+    FROM [dbo].[Expiations] AS [Expiations]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

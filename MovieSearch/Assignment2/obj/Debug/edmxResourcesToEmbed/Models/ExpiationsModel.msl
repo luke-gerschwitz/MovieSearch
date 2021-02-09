@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ExpiationsModelStoreContainer" CdmEntityContainer="ExpiationEntities">
+    <EntitySetMapping Name="Expiations">
+      <EntityTypeMapping TypeName="ExpiationsModel.Expiation">
+        <MappingFragment StoreEntitySet="Expiations">
+          <ScalarProperty Name="noticeStatusDesc" ColumnName="noticeStatusDesc" />
+          <ScalarProperty Name="driversLicenseStateDescExpiationSubject" ColumnName="driversLicenseStateDescExpiationSubject" />
+          <ScalarProperty Name="regStateDescExpiationVehicle" ColumnName="regStateDescExpiationVehicle" />
+          <ScalarProperty Name="expiationVehicleDescriptionExpiationVehicle" ColumnName="expiationVehicleDescriptionExpiationVehicle" />
+          <ScalarProperty Name="localServiceAreaDesc" ColumnName="localServiceAreaDesc" />
+          <ScalarProperty Name="incidentStartDate" ColumnName="incidentStartDate" />
+          <ScalarProperty Name="time24HourIncidentStart" ColumnName="time24HourIncidentStart" />
+          <ScalarProperty Name="issueDate" ColumnName="issueDate" />
+          <ScalarProperty Name="expiationOffenceCode" ColumnName="expiationOffenceCode" />
+          <ScalarProperty Name="offencePenaltyAmt" ColumnName="offencePenaltyAmt" />
+          <ScalarProperty Name="offenceLevyAmt" ColumnName="offenceLevyAmt" />
+          <ScalarProperty Name="corporateFeeAmount" ColumnName="corporateFeeAmount" />
+          <ScalarProperty Name="offenceStatus" ColumnName="offenceStatus" />
+          <ScalarProperty Name="penaltyWrittenOnNoticeAmount" ColumnName="penaltyWrittenOnNoticeAmount" />
+          <ScalarProperty Name="vehicleSpeed" ColumnName="vehicleSpeed" />
+          <ScalarProperty Name="expiationZoneSpeedLimit" ColumnName="expiationZoneSpeedLimit" />
+          <ScalarProperty Name="bloodAlcoholContentExp" ColumnName="bloodAlcoholContentExp" />
+          <ScalarProperty Name="speedCameraCategory" ColumnName="speedCameraCategory" />
+          <ScalarProperty Name="photoRejectedReasonCode" ColumnName="photoRejectedReasonCode" />
+          <ScalarProperty Name="photoRejectedReasonDesc" ColumnName="photoRejectedReasonDesc" />
+          <ScalarProperty Name="withdrawnReasonDesc" ColumnName="withdrawnReasonDesc" />
+          <ScalarProperty Name="noticeTypeDesc" ColumnName="noticeTypeDesc" />
+          <ScalarProperty Name="enforcementWarningNoticeFeeAmount" ColumnName="enforcementWarningNoticeFeeAmount" />
+          <ScalarProperty Name="fixedCameraLocnCode" ColumnName="fixedCameraLocnCode" />
+          <ScalarProperty Name="locationCodeMobileSpeedCamera" ColumnName="locationCodeMobileSpeedCamera" />
+          <ScalarProperty Name="offenceStatusDescription" ColumnName="offenceStatusDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExpiationCodes">
+      <EntityTypeMapping TypeName="ExpiationsModel.ExpiationCode">
+        <MappingFragment StoreEntitySet="ExpiationCodes">
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="expiationCategory" ColumnName="expiationCategory" />
+          <ScalarProperty Name="expiationOffenceLongDescription" ColumnName="expiationOffenceLongDescription" />
+          <ScalarProperty Name="expiationOffenceCode" ColumnName="expiationOffenceCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

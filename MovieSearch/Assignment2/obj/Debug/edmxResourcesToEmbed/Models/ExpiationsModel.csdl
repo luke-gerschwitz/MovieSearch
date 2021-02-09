@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExpiationsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Expiation">
+    <Key>
+      <PropertyRef Name="noticeStatusDesc" />
+      <PropertyRef Name="driversLicenseStateDescExpiationSubject" />
+      <PropertyRef Name="regStateDescExpiationVehicle" />
+      <PropertyRef Name="expiationVehicleDescriptionExpiationVehicle" />
+      <PropertyRef Name="localServiceAreaDesc" />
+      <PropertyRef Name="incidentStartDate" />
+      <PropertyRef Name="time24HourIncidentStart" />
+      <PropertyRef Name="issueDate" />
+      <PropertyRef Name="expiationOffenceCode" />
+      <PropertyRef Name="offencePenaltyAmt" />
+      <PropertyRef Name="offenceLevyAmt" />
+      <PropertyRef Name="corporateFeeAmount" />
+      <PropertyRef Name="offenceStatus" />
+      <PropertyRef Name="penaltyWrittenOnNoticeAmount" />
+      <PropertyRef Name="vehicleSpeed" />
+      <PropertyRef Name="expiationZoneSpeedLimit" />
+      <PropertyRef Name="bloodAlcoholContentExp" />
+      <PropertyRef Name="speedCameraCategory" />
+      <PropertyRef Name="photoRejectedReasonCode" />
+      <PropertyRef Name="photoRejectedReasonDesc" />
+      <PropertyRef Name="withdrawnReasonDesc" />
+      <PropertyRef Name="noticeTypeDesc" />
+      <PropertyRef Name="enforcementWarningNoticeFeeAmount" />
+      <PropertyRef Name="fixedCameraLocnCode" />
+      <PropertyRef Name="locationCodeMobileSpeedCamera" />
+      <PropertyRef Name="offenceStatusDescription" />
+    </Key>
+    <Property Name="noticeStatusDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="driversLicenseStateDescExpiationSubject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="regStateDescExpiationVehicle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="expiationVehicleDescriptionExpiationVehicle" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="localServiceAreaDesc" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="incidentStartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="time24HourIncidentStart" Type="Time" Nullable="false" Precision="0" />
+    <Property Name="issueDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="expiationOffenceCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="offencePenaltyAmt" Type="Int32" Nullable="false" />
+    <Property Name="offenceLevyAmt" Type="Int32" Nullable="false" />
+    <Property Name="corporateFeeAmount" Type="Int32" Nullable="false" />
+    <Property Name="offenceStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="penaltyWrittenOnNoticeAmount" Type="Int32" Nullable="false" />
+    <Property Name="vehicleSpeed" Type="Int32" Nullable="false" />
+    <Property Name="expiationZoneSpeedLimit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="bloodAlcoholContentExp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="speedCameraCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="photoRejectedReasonCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="photoRejectedReasonDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="withdrawnReasonDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="noticeTypeDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="enforcementWarningNoticeFeeAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fixedCameraLocnCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="locationCodeMobileSpeedCamera" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="offenceStatusDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ExpiationCode" Relationship="ExpiationsModel.FK__Expiation__expia__47DBAE45" FromRole="Expiation" ToRole="ExpiationCode" />
+  </EntityType>
+  <EntityContainer Name="ExpiationEntities" annotation:LazyLoadingEnabled="false">
+    <EntitySet Name="Expiations" EntityType="Self.Expiation" />
+    <EntitySet Name="ExpiationCodes" EntityType="ExpiationsModel.ExpiationCode" />
+    <AssociationSet Name="FK__Expiation__expia__47DBAE45" Association="ExpiationsModel.FK__Expiation__expia__47DBAE45">
+      <End Role="ExpiationCode" EntitySet="ExpiationCodes" />
+      <End Role="Expiation" EntitySet="Expiations" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ExpiationCode">
+    <Key>
+      <PropertyRef Name="expiationOffenceCode" />
+    </Key>
+    <Property Name="expiationOffenceCode" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="expiationOffenceLongDescription" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Expiations" Relationship="ExpiationsModel.FK__Expiation__expia__47DBAE45" FromRole="ExpiationCode" ToRole="Expiation" />
+    <Property Name="expiationCategory" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="category" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Expiation__expia__47DBAE45">
+    <End Type="ExpiationsModel.ExpiationCode" Role="ExpiationCode" Multiplicity="1" />
+    <End Type="ExpiationsModel.Expiation" Role="Expiation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExpiationCode">
+        <PropertyRef Name="expiationOffenceCode" />
+      </Principal>
+      <Dependent Role="Expiation">
+        <PropertyRef Name="expiationOffenceCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

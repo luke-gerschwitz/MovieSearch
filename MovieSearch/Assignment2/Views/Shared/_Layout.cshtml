@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("https://fonts.googleapis.com/css?family=Poppins&display=swap")
+    @Styles.Render("~/Content/PageStyles.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("styles", required: false)
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-default container-fluid justify-content-center">
+        <div class="row">
+            <p class="navbar-brand text-brand col text-center" id="homeLink">Movie<span class="secondColour">Search</span></p>
+        </div>
+    </nav>
+    <div class="container-fluid body-content mainContent">
+        @RenderBody()
+        <hr />
+        <footer class="text-center font-weight-bold">
+            <p>Luke Gerschwitz - @DateTime.Now.Year - Built using the OMDB API</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

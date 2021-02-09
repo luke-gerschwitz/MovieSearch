@@ -1,0 +1,232 @@
+﻿/*_Layout*/
+
+body {
+    background-color: #222222;
+    font-family: "Poppins", sans-serif;
+    color: white;
+}
+
+.secondColour {
+    color: #2eca6a !important;
+}
+
+.navbar {
+    margin: 0;
+    border-bottom: 4px solid #2eca6a;
+}
+
+#intro {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: white;
+}
+
+.text {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 2.5rem;
+}
+
+#homeLink {
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 2rem;
+    -webkit-transition: color 0.5s;
+    -moz-transition: color 0.5s;
+    -o-transition: color 0.5s;
+    transition: color 0.5s;
+}
+
+#homeLink:hover {
+    color: #2eca6a;
+}
+
+#tbMovie {
+    margin-right: 15px;
+}
+
+#search {
+    padding-bottom: 20px;
+}
+
+.middleBorder {
+    border-right: 3px solid #2eca6a;
+    animation: borderAnimation 2s forwards;
+    /*animation-delay: 1s;*/
+}
+
+@-webkit-keyframes borderAnimation {
+    0% {height: 0px;}
+    100% {height: 450px;}
+}
+
+@keyframes borderAnimation {
+    0% {height: 0px;}
+    100% {height: 450px;}
+}
+
+.card {
+    box-shadow: 0 1px 3px 0 #A9A9A9, 0 1px 2px 0 #A9A9A9;
+    /*transition: all 0.1s;*/
+    cursor: pointer;
+    color: black;
+    background-color: white;
+    border-radius: 10px;
+}
+
+/*.card:hover {
+    background-color: #E0E0E0;
+}*/
+
+.imgThumbnail {
+    height: 120px;
+    width: 80px;
+    display: block;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+}
+
+.title {
+    font-weight: bold;
+    font-size: large;
+    display: inline;
+}
+
+.year {
+    font-size: small;
+    color: #A9A9A9;
+    display: inline;
+}
+
+.genre {
+    font-size: small;
+}
+
+.sameline {
+    display: inline;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.imdbImage {
+    height: 25px;
+    width: 55px;
+}
+
+.rtImage {
+    height: 5px;
+    width: 5px;
+}
+
+/*.main {
+    font-size: larger;
+}
+
+.title {
+    padding: 5px;
+}
+
+.expiationData:nth-child(2n+1) {
+    background-color: #E8E8E8;
+}
+
+.expiationData:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.selected {
+    background-color: #81d4fa;
+}
+
+.year {
+    font-weight: bold;
+    background-color: #29b6f6;
+    padding: 5px;
+}
+
+.category {
+    text-align: left;
+}
+
+.ticket {
+    text-align: right;
+}
+
+.errorPic {
+    border-radius: 8px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 150px;
+    width: 150px;
+}
+
+
+Graph
+.months {
+    text-align: right;
+    padding: 10px 5px;
+}
+
+.bar {
+    margin-top: 3px;
+    border: solid;
+    text-align: right;
+    background-color: none;
+}
+
+.label {
+    margin-top: -1px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    text-align: center;
+    padding: 10px 5px;
+}
+
+.dataRow {
+    margin-left: 1px;
+    width: 95%;
+}
+
+.dataRow:hover {
+    margin-left: 0px;
+    background-color: #0288d1;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.dataRow:hover .bar {
+    background-color: #0288d1;
+}
+
+.dataDiv {
+    border: 1px solid #0097a7;
+    border-left-style: none;
+    background-color: #26c6da;
+    padding-right: 5px;
+    margin: 0;
+    left: -15px;
+    position: relative;
+    top: 18%;
+    width: 0%;
+}
+
+Details
+.detailsHeader {
+    margin-top: 10px;
+}
+
+.details {
+    width: 95%;
+    margin-left: 10px;
+}
+
+.details:nth-child(2n+1) {
+    background-color: #E8E8E8;
+}**/

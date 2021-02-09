@@ -1,0 +1,253 @@
+﻿@{
+    ViewBag.Title = "Movie Search";
+}
+
+@section styles {
+    <link href="~/Content/PageStyles.css" rel="stylesheet" />
+}
+<div class="row justify-content-center" id="intro">
+    <div class="col text-center text">SEARCH FOR ANY MOVIE</div>
+</div>
+<div class="row justify-content-center" id="search">
+    <input id="tbMovie" type="text" placeholder="Movie Title" name="search" class="form-control col-4" />
+    <input type="button" id="Bsearch" value="Search" class="btn btn-success col-1" />
+</div>
+<div class="row">
+    <div class="col-6" id="searchData">
+
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12" id="graph">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+
+        // Getting search results
+
+        $("#tbMovie").keypress(function (e) {
+            if (e.keyCode == 13) {
+                $("#Bsearch").click();
+            };
+        });
+
+        $("#Bsearch").click(function () {
+            var search = $.ajax({
+                url: "http://www.omdbapi.com/?apikey=aaeb420e&s=" + $("#tbMovie").val(),
+                method: "GET",
+                dataType: "json",
+                data: null,
+                timeout: 5000
+            });
+
+            search.done(function (data) {
+                $("#searchData").empty();
+                $("#searchData").addClass("middleBorder");
+
+                if (data.Response == "False") {
+                    $("<div>")
+                        .addClass("text-center")
+                        .text("No Results Returned. Please Try Again! ")
+                        .css({"font-weight": "bold", "font-size": "1rem"})
+                        .appendTo("#searchData");
+                }
+                else {
+                    var $info = $("<div>").addClass("row justify-content-center");
+                    var i = 0;
+
+                    $.each(data.Search, function (i, obj) {
+                        if (i < 6) {
+                            var $movie = $("<div>")
+                                .addClass("card col-3 mx-3 my-2")
+                                .attr("data-id", obj.imdbID)
+                                .appendTo($info);
+
+                            $("<img>").attr({
+                                src: obj.Poster,
+                                alt: "Poster N/A",
+                                title: obj.Title
+                            }).addClass("imgThumbnail")
+                                .appendTo($movie);
+
+                            $("<div>")
+                                .addClass("text-center")
+                                .text(obj.Title + " (" + obj.Year + ")")
+                                .css("font-weight", "bold")
+                                .appendTo($movie);
+
+                            i += 1;
+                        }
+                    });
+
+                    $info.appendTo("#searchData");
+                }
+            });
+
+
+            // If first ajax request fails
+            search.fail(function (xhr, statusText) {
+                $("#searchData").empty();
+
+                $("<div>")
+                    .addClass("text-center")
+                    .text("No Results Returned. Please Try Again! ")
+                    .css({"font-weight": "bold", "font-size": "1rem"})
+                    .appendTo("#searchData");
+            });
+        });
+
+        // Getting Film Data
+
+        $("#searchData").on("click", ".card", function () {
+            $("#graph").empty();
+
+            var imdbID = $(this).data("id");
+
+
+            var tableRequest = $.ajax({
+                url: "http://www.omdbapi.com/?apikey=aaeb420e&i=" + imdbID,
+                method: "GET",
+                dataType: "json",
+                data: null,
+                timeout: 5000
+            });
+
+
+            tableRequest.done(function (data) {
+
+                var $filmData = $("<div>").addClass("row");
+                var $leftInfo = $("<div>").addClass("col-6");
+                var $rightInfo = $("<div>").addClass("col-6");
+
+                $("<div>")
+                    .text(data.Title)
+                    .addClass("title")
+                    .appendTo($leftInfo);
+                $("<div>")
+                    .text(" (" + data.Year + ") " + data.Runtime)
+                    .addClass("year")
+                    .appendTo($leftInfo);
+
+                $("<div>")
+                    .text(data.Genre)
+                    .addClass("genre")
+                    .appendTo($leftInfo);
+
+                $("<br />").appendTo($leftInfo);
+
+                $("<div>")
+                    .text(data.Plot)
+                    .appendTo($leftInfo);
+
+                $("<br />").appendTo($leftInfo);
+
+                var $director = $("<div>");
+                $("<span>").text("Director: ").addClass("bold").appendTo($director);
+                $("<span>").text(data.Director).appendTo($director);
+                $("<br />").appendTo($director);
+                $("<span>").text("Starring: ").addClass("bold").appendTo($director);
+                $("<span>").text(data.Actors).appendTo($director);
+                $("<br />").appendTo($director);
+                $("<br />").appendTo($director);
+                $("<span>").text("Production Co: ").addClass("bold").appendTo($director);
+                $("<span>").text(data.Production).appendTo($director);
+                $("<br />").appendTo($director);
+                $("<span>").text("US Box Office: ").addClass("bold").appendTo($director);
+                $("<span>").text(data.BoxOffice).appendTo($director);
+                $director.appendTo($leftInfo);
+
+                $("<img>").attr({
+                    src: data.Poster,
+                    alt: data.Poster + " Poster",
+                    title: data.Title
+                })
+                    .css({ "height": "300px", "width": "200px" })
+                    .appendTo($rightInfo);
+
+                $("<br />").appendTo($rightInfo);
+
+                var $imdbRating = $("<div>");
+                var $imdbLink = $("<a>").attr({ "href": "https://www.imdb.com/title/" + imdbID, "target": "_blank" });
+                $("<br />").appendTo($rightInfo);
+
+                $("<img>").attr({
+                    src: "../Images/imdbLogo.png",
+                    alt: "IMDB",
+                    title: data.Title + " IMDB Page"
+                })
+                    .addClass("imdbImage")
+                    .appendTo($imdbLink);
+
+                $imdbLink.appendTo($imdbRating);
+
+                $("<div>")
+                    .text(" Rating: " + data.imdbRating + "/10")
+                    .addClass("sameline")
+                    .appendTo($imdbRating);
+
+                $imdbRating.appendTo($rightInfo);
+
+
+                if (data.Type == "movie" && data.Metascore != "N/A") {
+                    var $rtRating = $("<div>");
+                    var $rtLink = $("<a>").attr({ "href": "https://www.rottentomatoes.com/search/?search=" + data.Title, "target": "_blank" });
+                    $("<img>").attr({
+                        src: "../Images/rtLogo.png",
+                        alt: "Rotten Tomatoes",
+                        title: data.Title + " Rotten Tomatoes Search"
+                    })
+                        .css({"height": "20px", "width": "20px"})
+                        .appendTo($rtLink);
+
+                    $rtLink.appendTo($rtRating);
+
+                    $("<div>")
+                        .text(" Rotten Tomatoes: " + data.Ratings[1].Value)
+                        .addClass("sameline")
+                        .appendTo($rtRating);
+
+                    $imdbRating.appendTo($rightInfo);
+                    $rtRating.appendTo($rightInfo);
+                };
+
+                $leftInfo.appendTo($filmData);
+                $rightInfo.appendTo($filmData);
+                $filmData.appendTo("#graph");
+            });
+
+            //If Second Ajax Request fails
+            tableRequest.fail(function (xhr, statusText) {
+                var $error = $("<div>").addClass("row");
+                var $errorImg = $("<div>").addClass("col");
+                var $errorText = $("<div>").addClass("row");
+
+                $("<img />")
+                    .attr({
+                        src: "../Images/ErrorImage.png",
+                        alt: "Error Occurred",
+                        title: "Error Occurred"
+                    })
+                    .addClass("errorPic")
+                    .appendTo($errorImg);
+
+                $errorImg.appendTo($error);
+
+                $("<div>")
+                    .addClass("col text-center display-4")
+                    .text("Error, failed to load Expiation Data!")
+                    .appendTo($errorText);
+
+                $errorText.appendTo($error);
+                $error.appendTo("#table");
+            });
+        });
+
+    </script>
+}
+
+
