@@ -1,5 +1,5 @@
 
-<img src="https://github.com/luke-gerschwitz/MovieSearch/blob/main/Images/logo.png" width="350" height="200">
+<img src="https://github.com/luke-gerschwitz/MovieSearch/blob/main/Images/logo.png" width="350" height="175">
 
 # MovieSearch
 
